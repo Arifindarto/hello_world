@@ -1,0 +1,27 @@
+[project]
+name = "hello_world"
+version = "0.1.0"
+description = "Hello world!"
+authors = [
+    {name = "Arif Indarto", email = "lifealien2020@gmail.com"},
+]
+dependencies = [
+    "django>=5.0.2",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm.scripts]
+migrate = "python manage.py migrate"
+start = "python manage.py runserver"
+post_init = { composite = [
+    "pdm install",
+    "migrate",
+    "start",
+] }
+
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
